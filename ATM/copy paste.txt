@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>LOGIN</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        function cardnumber()
+        {
+            var x = document.myform.uname.value;
+            //var x = /^\d{10}$/;
+            if(isNaN(x))
+                {
+                    document.getElementById("numloc").innerHTML="Enter Numeric value only";
+                    return false;
+                }
+
+            var length = x.toString().length;
+            
+            if(length>16 || length<16)
+            {
+                document.getElementById("numloc").innerHTML="Length of card number should be 16";
+                return false;
+            }
+            else
+                {
+                    
+                    return true;               }
+        }
+</script>
+   
+</head>
+<body>
+
+
+     <form action="otpPage.php" name="myform" method="post" onsubmit="return cardnumber()">
+
+        <h2>WELCOME</h2>
+
+        <?php if (isset($_GET['error'])) { ?>
+
+            <p class="error"><?php echo $_GET['error']; ?></p>
+
+        <?php } ?>
+
+        <label>Card Number</label>
+        
+        <input type="text" name="uname" id="card" placeholder="Card Number"><span id="numloc"></span><br>
+        <?php $input_cardno = isset($_POST["uname"]);
+        echo $input_cardno;
+        ?>
+
+            <button type="submit">Generate OTP</button>
+        
+        
+
+     </form>
