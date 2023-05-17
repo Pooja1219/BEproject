@@ -40,18 +40,13 @@
 
         <h2>WELCOME</h2>
 
-        <?php if (isset($_GET['error'])) { ?>
-
-            <p class="error"><?php echo $_GET['error']; ?></p>
-
-        <?php } ?>
 
         <label>Card Number</label>
         
         <input type="text" name="uname" id="card" placeholder="Card Number"><span id="numloc"></span><br>
      
 
-            <button type="submit">Generate OTP</button>
+            <button type="submit">Submit</button>
         
         
             </form>
@@ -59,6 +54,7 @@
                 session_start();
                 $name = $_POST['uname'];
                 $_SESSION['uname'] = $name;
+                
                 
 
      ?>
